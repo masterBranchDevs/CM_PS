@@ -15,7 +15,7 @@ import SplitLayout from './cv/splitLayout';
 import SlidingCards from './ourCompany/ourCompany';
 import Testimonials from './testimonials/testimonials'
 import Footer from './footer/footer';
-// import body_img from '../assects/img.png'
+
 
 const App = () => {
   const images = [c1, c2, c3, c4, c5];

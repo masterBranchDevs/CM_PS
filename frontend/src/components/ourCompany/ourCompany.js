@@ -17,9 +17,9 @@ const OurCompany = () => {
 
     // Animation variants for images
     const imageVariants = {
-        enter: { opacity: 0, x: 50 }, // Enter from the right
-        center: { opacity: 1, x: 0 }, // Center position
-        exit: { opacity: 0, x: 50 }, // Exit to the left
+        enter: { opacity: 0, x: 50 },
+        center: { opacity: 1, x: 0 },
+        exit: { opacity: 0, x: 50 }, 
     };
 
     // Update images every 3 seconds
@@ -28,7 +28,7 @@ const OurCompany = () => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % (images.length - 2)); // Loop through images
         }, 3000); // Change image every 3 seconds
 
-        return () => clearInterval(interval); // Cleanup interval on component unmount
+        return () => clearInterval(interval); 
     }, [images]);
 
     // Calculate which images to show
@@ -40,10 +40,10 @@ const OurCompany = () => {
 
     return (
         <>
-            <div className="">
-                <h3 className="mb-3 text-white text-center ">Our Company</h3>
+            <div className="pt-5 pb-5">
+                <h3 className="mb-3 text-white text-center">Our Company</h3>
             </div>
-            <section className="pt-5 pb-5">
+            <section className="pt-4 pb-5 ">
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
@@ -51,21 +51,19 @@ const OurCompany = () => {
                                 <AnimatePresence>
                                     {currentImages.map((image, index) => (
                                         <motion.div
-                                            key={image}  // Ensure that each image is re-rendered correctly
+                                            key={image}  
                                             className="col-md-4 mb-1"
-                                            initial="enter" // Fade in when entering
-                                            animate="center" // Stay in the center
-                                            exit="exit" // Fade out when leaving
-                                            variants={imageVariants} // Use variants for animations
-                                            transition={{ duration: 2 }} // Duration of the transition
+                                            initial="enter" 
+                                            animate="center" 
+                                            exit="exit" 
+                                            variants={imageVariants} 
+                                            transition={{ duration: 2 }} 
                                         >
                                             <img
-                                                className="img-fluid rounded-pill shadow"
+                                                id="images"
+                                                className="img-fluid rounded-pill shadow h-24 sm:h-24 md:h-60 lg:h-60 xl:h-60"
                                                 alt={`carousel-${index}`}
                                                 src={image}
-                                                style={{
-                                                    height: '15rem',
-                                                }}
                                             />
                                         </motion.div>
                                     ))}
