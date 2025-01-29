@@ -87,7 +87,7 @@ const SplitLayout = () => {
                         We will get back to you soon.
                     </p>
                     <button className="bg-orange-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-orange-600">
-                        <a href="https://api.whatsapp.com/send?phone=918511276458&text=Hi there !" target="_blank" className="hover:text-white">
+                        <a href="https://api.whatsapp.com/send?phone=919601505408&text=Hi, My name is :- " target="_blank" className="hover:text-white">
                             Send Your CV
                         </a>
                     </button>
