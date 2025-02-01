@@ -1,0 +1,20 @@
+#bg-im{
+    background-image: url('./bg-texture.png');
+    background-color: rgba(25, 36, 44, 0.945);
+    color: rgb(152, 160, 187);
+}
+#inp{
+    background-color: rgba(55, 69, 95, 0.603);
+    color: white;
+}
+#inp2{
+    background-color: rgba(55, 69, 95, 0.603);
+    color: white;
+}
+
+/* Right div */
+
+#rightDiv{
+    background-color: #3d5561;
+    color: white;
+}

@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import I1 from './images/Img1.webp'
+import I2 from './images/Img2.webp'
+import I3 from './images/Img3.webp'
+import I4 from './images/Img4.webp'
+import I5 from './images/Img5.webp'
+import I6 from './images/Img6.webp'
+import I7 from './images/Img7.webp'
+import I8 from './images/Img8.webp'
+import I9 from './images/Img9.webp'
 
 const OurCompany = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const images = [
-        "https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
-        "https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
-        "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
-        "https://images.unsplash.com/photo-1532771098148-525cefe10c23?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
-        "https://images.unsplash.com/photo-1532715088550-62f09305f765?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
-        "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
-        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
-        "https://images.unsplash.com/photo-1532777946373-b6783242f211?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
-        "https://images.unsplash.com/photo-1532763303805-529d595877c5?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        I1,I2,I3,I4,I5,I6,I7,I8,I9,
     ];
 
     // Animation variants for images
@@ -40,18 +41,18 @@ const OurCompany = () => {
 
     return (
         <>
-            <div className="pt-5 pb-5">
-                <h3 className="mb-3 text-white text-center">Our Company</h3>
-            </div>
-            <section className="pt-4 pb-5 ">
+            {/* <div className=" "> */}
+                <h3 className=" text-white text-center sm:p-1 md:p-1">Our Company</h3>
+            {/* </div> */}
+            <section className="pt-4 pb-1 ">
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
                             <div className="carousel-inner d-flex">
                                 <AnimatePresence>
-                                    {currentImages.map((image, index) => (
+                                    {currentImages.map((images, index) => (
                                         <motion.div
-                                            key={image}  
+                                            key={images}  
                                             className="col-md-4 mb-1"
                                             initial="enter" 
                                             animate="center" 
@@ -63,7 +64,7 @@ const OurCompany = () => {
                                                 id="images"
                                                 className="img-fluid rounded-pill shadow h-24 sm:h-24 md:h-60 lg:h-60 xl:h-60"
                                                 alt={`carousel-${index}`}
-                                                src={image}
+                                                src={images}
                                             />
                                         </motion.div>
                                     ))}
