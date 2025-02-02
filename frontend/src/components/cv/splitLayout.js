@@ -1,24 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './style.css';
+
 const SplitLayout = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const jobsPerPage = 5;
     const [selectedJob, setSelectedJob] = useState(null);
     const [formData, setFormData] = useState({ name: '', education: '', position: '' });
     const [modalOpen, setModalOpen] = useState(false);
+    const [jobs, setJobs] = useState([]); // State for jobs
 
-    const jobs = [
-        { title: 'Data Entries', positions: 3 },
-        { title: 'Welder', positions: 5 },
-        { title: 'Electrician', positions: 2 },
-        { title: 'Fitter', positions: 4 },
-        { title: 'Rigger', positions: 3 },
-        { title: 'Plumber', positions: 6 },
-        { title: 'Mechanic', positions: 7 },
-        { title: 'Carpenter', positions: 2 },
-        { title: 'Driver', positions: 8 },
-        { title: 'Painter', positions: 3 }
-    ];
+    // Fetch jobs from MongoDB
+    useEffect(() => {
+        fetch('http://localhost:5000/api/cm/jobs')
+            .then((res) => res.json())
+            .then((data) => setJobs(data))
+            .catch((err) => console.error(err));
+    }, []);
 
     const openModal = (jobTitle) => {
         setSelectedJob(jobTitle);
@@ -30,12 +27,29 @@ const SplitLayout = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form Submitted:', formData);
-        alert('Application Submitted Successfully!');
-        setFormData({ name: '', education: '', position: '' });
-        setModalOpen(false);
+
+        try {
+            const response = await fetch('http://localhost:5000/api/cm/job_apply_form', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+            const data = await response.json();
+            console.log("Entered Data : ", data);
+            if (response.ok) {
+                alert('Job Applied Successfully');
+                setFormData({ name: '', education: '', position: '' });
+                setModalOpen(false);
+            } else {
+                alert('Error');
+            }
+
+        } catch (error) {
+            console.error('Error while submitting the job application:', error);
+            alert('Something went wrong, please try again.');
+        }
     };
 
     const indexOfLastJob = currentPage * jobsPerPage;
@@ -76,8 +90,8 @@ const SplitLayout = () => {
                 <nav className="mt-3">
                     <ul className="flex justify-center space-x-2">
                         {Array.from({ length: Math.ceil(jobs.length / jobsPerPage) }, (_, index) => (
-                            <li key={index + 1} className={`px-3 py-1 rounded ${currentPage === index + 1 ? 'bg-blue-500 text-white' : 'bg-gray-700 text-white'}`}>
-                                <button onClick={() => paginate(index + 1)}>
+                            <li key={index + 1} className={`px-2 py-1 rounded ${currentPage === index + 1 ? 'bg-blue-500 text-white' : 'bg-gray-700 text-white'}`}>
+                                <button onClick={() => paginate(index + 1)} className='px-2'>
                                     {index + 1}
                                 </button>
                             </li>
@@ -114,11 +128,11 @@ const SplitLayout = () => {
             <div id='rightDiv' className="flex flex-col items-center justify-center w-full p-3 shadow rounded">
                 <h2 className="font-bold text-lg">Share your CV with us!</h2>
                 <p className="my-2 pb-3">We will get back to you soon.</p>
-                <a 
-                href="https://api.whatsapp.com/send?phone=919601505408&text=Hi there !" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="bg-blue-500 text-white px-5 py-2 rounded hover:bg-blue-700">
+                <a
+                    href="https://api.whatsapp.com/send?phone=919601505408&text=Hi there !"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-blue-500 text-white px-5 py-2 rounded hover:bg-blue-700">
                     Send Your CV
                 </a>
                 <p className="text-sm pt-3 mt-2">Apply for hundreds of jobs across Surat.</p>
