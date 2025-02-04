@@ -1,8 +1,8 @@
-const express = require('express');
-const Recent_Applied = require('../models/clientModel')
-const router = express.Router()
+const Recent_Applied = require('../models/clientModel');
 
-router.post('/job_apply_form', async (req, res) => {
+// People Applying for job
+
+const applForyJob = async (req, res) => {
     try {
         const { name, education, position } = req.body;
 
@@ -28,5 +28,8 @@ router.post('/job_apply_form', async (req, res) => {
             message: "Internal server error !"
         })
     }
-});
-module.exports = router;
+};
+
+module.exports = {
+    applForyJob
+}

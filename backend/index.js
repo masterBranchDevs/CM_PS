@@ -2,8 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const connection_DB = require("./src/config/db");
-const jobFormRoutes = require("./src/routes/routes");
-const jobRoutes = require('./src/routes/jobRoutes');
+const routes = require("./src/routes/index");
 
 dotenv.config();
 const app = express();
@@ -17,8 +16,7 @@ app.use(express.json());
 connection_DB();
 
 //Routes
-app.use('/api/cm', jobFormRoutes);
-app.use('/api/jobs', jobRoutes);
+app.use('/api/cm', routes);
 
 
 // Start the server
