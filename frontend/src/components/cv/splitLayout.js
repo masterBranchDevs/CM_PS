@@ -11,15 +11,15 @@ const SplitLayout = () => {
 
     // Fetch jobs from MongoDB
     useEffect(() => {
-        fetch('http://localhost:5000/api/cm/jobs')
+        fetch('http://localhost:5000/api/cm/jobs/all_jobs')
             .then((res) => res.json())
             .then((data) => setJobs(data))
-            .catch((err) => console.error(err));
+            .catch((err) => console.error("Error fetching jobs:", err));
     }, []);
 
-    const openModal = (jobTitle) => {
-        setSelectedJob(jobTitle);
-        setFormData({ ...formData, position: jobTitle });
+    const openModal = (job) => {
+        setSelectedJob(job.jobTitle);
+        setFormData({ ...formData, position: job.jobTitle });
         setModalOpen(true);
     };
 
@@ -31,7 +31,7 @@ const SplitLayout = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:5000/api/cm/job_apply_form', {
+            const response = await fetch('http://localhost:5000/api/cm/apply_job/form', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
@@ -62,7 +62,7 @@ const SplitLayout = () => {
         <div className="flex flex-col lg:flex-row w-full pt-2 gap-3 min-h-[31rem]">
             {/* Left Section */}
             <div className="text-white flex flex-col w-full p-3 shadow rounded bg-[#3d5561] relative">
-                <h2 className="mb-3">Recent Openings</h2>
+            <h1 className="mb-2 text-small font-bold dark:text-white md:text-2xl lg:text-2xl"><span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-500 from-sky-400">Recent Opening</span></h1>
                 <div className="overflow-x-auto">
                     <table className="w-full border-collapse rounded-lg overflow-hidden">
                         <thead className="bg-gray-700 text-white">
@@ -74,11 +74,16 @@ const SplitLayout = () => {
                         </thead>
                         <tbody className="bg-gray-800 text-white divide-y divide-gray-700">
                             {currentJobs.map((job, index) => (
-                                <tr key={index} className="hover:bg-gray-600">
-                                    <td className="p-3">{job.title}</td>
-                                    <td className="p-3">{job.positions}</td>
+                                <tr key={job._id} className="hover:bg-gray-600">
                                     <td className="p-3">
-                                        <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" onClick={() => openModal(job.title)}>
+                                        {job.jobTitle}{" "}
+                                        {index < 3 && (
+                                            <span className="badge badge-warning ms-2 text-200 blinking ">New</span>
+                                        )}
+                                    </td>
+                                    <td className="p-3">{job.position}</td>
+                                    <td className="p-3">
+                                        <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" onClick={() => openModal(job)}>
                                             Apply
                                         </button>
                                     </td>

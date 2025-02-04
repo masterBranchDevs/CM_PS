@@ -21,14 +21,14 @@ const App = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 2000); // Simulating a delay
+    }, 1000); // Simulating a delay
   }, []);
 
   return (
     <>
       {loading ? (
         <div className="loader-container">
-          <img src={loader} alt="Loading..." className="loader rounded-full" />
+          <img src={loader} alt="Loading..." className="loader rounded" />
         </div>
       ) : (
         <>
