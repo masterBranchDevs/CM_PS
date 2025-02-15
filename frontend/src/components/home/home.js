@@ -27,6 +27,7 @@ const Carousel = ({ images }) => {
                         onError={(e) => e.target.src = 'path/to/default-image.jpg'} // Fallback image
                         alt={`Slide ${index + 1}`}
                         className="w-full h-full object-cover"
+                        loading="lazy"
                     />
                 </div>
             ))}

@@ -7,10 +7,10 @@
     background-color: rgba(55, 69, 95, 0.603);
     color: white;
 }
-#inp2{
+/* #inp2{
     background-color: rgba(55, 69, 95, 0.603);
     color: white;
-}
+} */
 
 /* Right div */
 
@@ -24,6 +24,6 @@
     100% { opacity: 1; }
 }
 
-.blinking {
-    animation: blink 1s infinite;
+#blink {
+    animation: blink 2s infinite;
 }

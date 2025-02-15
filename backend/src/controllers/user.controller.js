@@ -1,35 +1,46 @@
 const Recent_Applied = require('../models/clientModel');
 
-// People Applying for job
-
-const applForyJob = async (req, res) => {
+// People Applying for Job
+const applyForJob = async (req, res) => {
     try {
-        const { name, education, position } = req.body;
+        const { 
+            fullName, age, gender, education, currentLocation, 
+            currentJob, totalExperience, currentSalary, expectedSalary, 
+            email, mobile, position 
+        } = req.body;
 
-        if(!name || !education || !position) {
+        // Check if all fields are provided
+        if (!fullName || !age || !gender || !education || !currentLocation ||
+            !currentJob || !totalExperience || !currentSalary || !expectedSalary ||
+            !email || !mobile || !position) {
             return res.status(400).json({
                 status: "Error",
-                message: "All fields are required !"
+                message: "All fields are required!"
             });
         }
-        const newJob = new Recent_Applied({
-            name, education, position
+
+        // Create a new job application entry
+        const newJobApplication = new Recent_Applied({
+            fullName, age, gender, education, currentLocation,
+            currentJob, totalExperience, currentSalary, expectedSalary,
+            email, mobile, position
         });
-        await newJob.save();
+
+        await newJobApplication.save();
+
         res.status(201).json({
             status: "Success",
-            message: "Job Applied Successfully !"
+            message: "Job Applied Successfully!"
         });
 
-
-    }catch(error){
+    } catch (error) {
         res.status(500).json({
             status: "Error",
-            message: "Internal server error !"
-        })
+            message: "Internal server error!"
+        });
     }
 };
 
 module.exports = {
-    applForyJob
-}
+    applyForJob
+};

@@ -3,7 +3,7 @@ const express = require('express');
 const userJobApply = require('../controllers/user.controller')
 const router = express.Router()
 
-router.post('/form', userJobApply.applForyJob );
+router.post('/form', userJobApply.applyForJob );
 
 
 module.exports = router;
