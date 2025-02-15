@@ -1,3 +1,15 @@
-/* #nav1{
-    padding-left: 0px !important;
-} */
+#cmps {
+    letter-spacing: 10px;
+}
+
+@media (max-width: 768px) {
+    #cmps {
+        letter-spacing: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    #cmps {
+        letter-spacing: 3px;
+    }
+}

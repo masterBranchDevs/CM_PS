@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logo from './logo.png';
-// import './nav.css';
+import './nav.css';
 
 const NavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,7 +18,7 @@ const NavBar = () => {
                         className="h-8 rounded-full"
                         alt="Flowbite Logo"
                     />
-                    <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+                    <span id="cmps" className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
                         CM Placement Services
                     </span>
                 </a>

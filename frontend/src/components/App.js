@@ -1,9 +1,4 @@
 import React, { useState, useEffect } from "react";
-import c1 from "../assects/Img1.webp";
-import c2 from "../assects/Img2.webp";
-import c3 from "../assects/Img3.webp";
-import c4 from "../assects/Img4.webp";
-import c5 from "../assects/Img5.webp";
 import loader from "../assects/cm.png"; // Import loader image
 import "../index.css";
 import "./app.css";
@@ -16,7 +11,13 @@ import Footer from "./footer/footer";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
-  const images = [c1, c2, c3, c4, c5];
+  const images = [
+    "https://res.cloudinary.com/dyj4csr44/image/upload/v1739382442/carousel/wcsmax8gcfux2mzsbry7.jpg",
+    "https://res.cloudinary.com/dyj4csr44/image/upload/v1739382441/carousel/ni1lmveheixhr9owyrgb.jpg",
+    "https://res.cloudinary.com/dyj4csr44/image/upload/v1739382440/carousel/jz8pzatt2fbozzgfc1t9.jpg",
+    "https://res.cloudinary.com/dyj4csr44/image/upload/v1739382439/carousel/i1vgbm4w7qcsn9nla8vr.jpg",
+    "https://res.cloudinary.com/dyj4csr44/image/upload/v1739382439/carousel/bwmgwxt6obfydqe3yndi.jpg",
+  ];
 
   useEffect(() => {
     setTimeout(() => {
