@@ -40,7 +40,7 @@ const OurCompany = () => {
 
     return (
         <>
-            <h3 className="text-white text-center sm:p-1 md:p-1">Our Company</h3>
+            <h3 className="text-white text-center sm:p-1 md:p-1">Major Companies</h3>
             <section className="pt-4 pb-1">
                 <div className="container">
                     <div className="row">
