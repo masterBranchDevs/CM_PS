@@ -16,7 +16,10 @@ const SplitLayout = () => {
     useEffect(() => {
         fetch('http://localhost:5000/api/cm/jobs/all_jobs')
             .then((res) => res.json())
-            .then((data) => setJobs(data))
+            .then((data) => {
+                console.log("Fetched jobs:", data);
+                setJobs(data)
+            })
             .catch((err) => console.error("Error fetching jobs:", err));
     }, []);
 
@@ -84,16 +87,16 @@ const SplitLayout = () => {
 
     const handleCompanyInquiry = async (e) => {
         e.preventDefault();
-        
+
         const formValues = {
             companyName: e.target.companyName.value.trim(),
             firstName: e.target.firstName.value.trim(),
             lastName: e.target.lastName.value.trim(),
             mobile: e.target.mobile.value.trim()
         };
-    
+
         console.log("Sending data:", formValues); // Debug log
-    
+
         // More strict validation
         for (const [key, value] of Object.entries(formValues)) {
             if (!value) {
@@ -101,7 +104,7 @@ const SplitLayout = () => {
                 return;
             }
         }
-    
+
         try {
             const response = await fetch('http://localhost:5000/api/cm/company/inquiry', {
                 method: 'POST',
@@ -111,10 +114,10 @@ const SplitLayout = () => {
                 },
                 body: JSON.stringify(formValues)
             });
-            
+
             const data = await response.json();
             console.log("Response from server:", data); // Debug log
-    
+
             if (response.ok) {
                 alert('Company Inquiry Sent Successfully');
                 e.target.reset();
