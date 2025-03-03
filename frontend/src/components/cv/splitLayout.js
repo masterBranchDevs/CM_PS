@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './style.css';
+// import FETCH_ALL_JOBS from '../../config'
 
 const SplitLayout = () => {
     const [currentPage, setCurrentPage] = useState(1);
