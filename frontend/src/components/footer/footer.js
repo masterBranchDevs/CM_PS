@@ -7,7 +7,9 @@ const Footer = () => {
     useEffect(() => {
         const fetchVisitorCount = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/visitors/count');
+                const response = await axios.get('http://localhost:5000/api/visitors/count', {
+                    withCredentials: true // Ensures cookies are sent
+                });
                 setVisitorCount(response.data.count);
             } catch (error) {
                 console.error('Error fetching visitor count:', error);
@@ -16,7 +18,9 @@ const Footer = () => {
 
         const incrementVisitorCount = async () => {
             try {
-                await axios.post('http://localhost:5000/api/visitors/increment');
+                await axios.post('http://localhost:5000/api/visitors/increment', {}, {
+                    withCredentials: true // Ensures cookies are sent
+                });
                 fetchVisitorCount();
             } catch (error) {
                 console.error('Error incrementing visitor count:', error);

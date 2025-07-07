@@ -51,11 +51,10 @@ const NavBar = () => {
 
                 {/* Navigation Links */}
                 <div
-                    className={`${isMenuOpen ? "block" : "hidden"
-                        } w-full md:block md:w-auto`}
+                    className={`${isMenuOpen ? "block" : "hidden"} w-full md:block md:w-auto`}
                     id="navbar-solid-bg"
                 >
-                    <ul className="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
+                    <ul className="flex flex-col md:flex-row items-center justify-center font-medium rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
                         <li>
                             <a
                                 href="/"
@@ -72,7 +71,6 @@ const NavBar = () => {
                                 Clients
                             </a>
                         </li>
-
                         <li>
                             <a
                                 href="/contact"

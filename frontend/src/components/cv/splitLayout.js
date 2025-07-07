@@ -15,7 +15,7 @@ const SplitLayout = () => {
     const [jobs, setJobs] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/cm/jobs/all_jobs')
+        fetch('http://localhost:5000/api/jobs/all_jobs')
             .then((res) => res.json())
             .then((data) => {
                 console.log("Fetched jobs:", data);
